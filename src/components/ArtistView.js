@@ -27,7 +27,7 @@ function ArtistView(){
     const renderAlbums = justAlbums.map((album,i) => {
         return(
             <div>
-                <Link to = {`/album/${album.collectionName}`}>
+                <Link to = {`/album/${album.collectionId}`}>
                 <p>{album.collectionName}</p>
                 </Link>
             </div>
@@ -44,3 +44,7 @@ function ArtistView(){
 }
 
 export default ArtistView
+
+
+
+    
