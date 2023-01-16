@@ -4,7 +4,7 @@
 //first we import hooks from react
 
 import {useState, useEffect} from 'react'
-import {useParams} from 'react-router-dom'
+import {useParams, Link} from 'react-router-dom'
 
 function ArtistView(){
     const { id } = useParams()
@@ -23,10 +23,22 @@ function ArtistView(){
         fetchData()
     },[id])
 
+    const justAlbums = artistData.filter(entry => entry.collectionType === 'Album')
+    const renderAlbums = justAlbums.map((album,i) => {
+        return(
+            <div>
+                <Link to = {`/album/${album.collectionName}`}>
+                <p>{album.collectionName}</p>
+                </Link>
+            </div>
+        )
+    })
+
     return(
         <div>
             <h2> The id passed was: {id} </h2>
             <p>Artist Data Goes Here!</p>
+            {renderAlbums}
         </div>
     )
 }
