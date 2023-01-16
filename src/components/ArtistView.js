@@ -6,6 +6,8 @@
 import {useState, useEffect} from 'react'
 import {useParams, Link} from 'react-router-dom'
 
+console.log('5')
+
 function ArtistView(){
     const { id } = useParams()
     const [artistData, setArtistData] = useState([])
@@ -23,6 +25,7 @@ function ArtistView(){
         fetchData()
     },[id])
 
+
     const justAlbums = artistData.filter(entry => entry.collectionType === 'Album')
     const renderAlbums = justAlbums.map((album,i) => {
         return(
@@ -33,6 +36,7 @@ function ArtistView(){
             </div>
         )
     })
+
 
     return(
         <div>
