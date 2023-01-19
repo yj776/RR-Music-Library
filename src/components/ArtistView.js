@@ -4,13 +4,17 @@
 //first we import hooks from react
 
 import {useState, useEffect} from 'react'
-import {useParams, Link} from 'react-router-dom'
+import {useParams, Link, useNavigate} from 'react-router-dom'
+
 
 console.log('5')
 
 function ArtistView(){
     const { id } = useParams()
     const [artistData, setArtistData] = useState([])
+    const navigate = useNavigate()
+
+
 
     useEffect(() => {
         const API_URL = `http://localhost:4000/album/${id}`
@@ -38,8 +42,18 @@ function ArtistView(){
     })
 
 
+    const navButtons = () => {
+        return(
+            <div>
+                <button onClick = {() => navigate(-1)}>Back</button>
+                <button onClick={ () => navigate('/')}>Home</button>
+            </div>
+        )
+    }
+
     return(
         <div>
+            {navButtons()}
             <h2> The id passed was: {id} </h2>
             <p>Artist Data Goes Here!</p>
             {renderAlbums}
