@@ -45,6 +45,7 @@ function AlbumView(){
 
     return(
         <div>
+            {albumData.length > 0 ?<h2>{albumData[0].collectionName}</h2> :<h2>Loading ...</h2>}
             {navButtons()}
             <h2>The id passed was: {id}</h2>
             <p>Album Data Goes Here!</p>
